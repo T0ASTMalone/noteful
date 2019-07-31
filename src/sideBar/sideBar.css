@@ -1,0 +1,16 @@
+.sideBar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.folder {
+    width: 200px;
+    height: 50px;
+}
+
+.add {
+    width: 150px;
+    height: 50px;
+    margin: 20px;
+}

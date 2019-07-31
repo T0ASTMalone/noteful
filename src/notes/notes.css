@@ -1,0 +1,10 @@
+.notes {
+    padding-left: 20px;
+}
+
+.note {
+    border: 1px solid black;
+    width: 75vw;
+    height: 100px;
+    margin-bottom: 20px;
+}
