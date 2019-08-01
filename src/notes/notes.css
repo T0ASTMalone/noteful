@@ -1,10 +1,34 @@
 .notes {
     padding-left: 20px;
+    padding: 20px;
+    width: 75vw;
 }
 
 .note {
     border: 1px solid black;
-    width: 75vw;
     height: 100px;
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.delete-note {
+    background-color: white;
+    border: 1px solid black;
+    padding: 7px 5px;
+    align-self: flex-end;
+    display: inline-block;
+}
+
+.date-modified {
+    justify-self: flex-end;
+}
+
+.add-note {
+    padding: 16px;
+    background-color: white;
+    border: 1px solid black;
+    width: 40%;
 }

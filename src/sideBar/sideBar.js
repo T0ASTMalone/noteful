@@ -1,18 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './sideBar.css';
 
 class SideBar extends React.Component {
 
     render() {
         const folders = this.props.folders.map(folder => (
-            <div className='folder-link' key={folder.id}>
-                <Link to={`/folder/${folder.id}`}>{folder.name}</Link>
-            </div>
+            <NavLink 
+                className='folder-link' 
+                key={folder.id} 
+                to={`/folder/${folder.id}`}>
+                {folder.name}
+            </NavLink>
         ))
         return (
-            <div className='sideBar'>
+            <div className='side-bar'>
                 { folders }
+                <button className='add-folder'>Add Folder</button>
             </div>
         )
     }

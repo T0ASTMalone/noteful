@@ -27,14 +27,28 @@ class App extends Component {
 
   getNote(noteId) {
     return this.state.notes.find(note => {
-      return note.id === noteId
+      return note.id === noteId;
     })
+  }
+
+  getFolderName(noteId) {
+    let id = this.state.notes.find(note => {
+      let folderId;
+      if(note.id === noteId) {
+        folderId = note.folderId;
+      }
+      return folderId
+    })
+    let folder = this.state.folders.find(folder => {
+      return folder.id === id.folderId
+    })
+    return folder.name;
   }
 
   render() {
     return (
       <div className="App">
-        <header>
+        <header className="header">
           <h1>
             <Link to='/'>Noteful</Link>
           </h1>
@@ -46,7 +60,12 @@ class App extends Component {
               exact
               path={['/' , '/folder/:folderId']}
               render={(props) => <SideBar folders={this.state.folders}/>}/>
-            <Route path='/note' component={NoteNav}/>
+            <Route 
+              path='/note/:noteId' 
+              render={(props) => <NoteNav 
+                folderName={this.getFolderName(props.match.params.noteId)}
+                history={props.history}/>}
+              />
           </Switch>
           </nav>
           <main>

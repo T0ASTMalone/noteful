@@ -1,5 +1,4 @@
 import React from 'react';
-import './Folder.css';
 import Notes from '../notes/notes';
 
 class Folder extends React.Component {
