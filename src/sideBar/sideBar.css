@@ -1,38 +1,36 @@
 .side-bar {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex: 1 0 0;
-    overflow: hidden;
-    height: 100%;
-    width: 20vw;
-    margin: 20px;
-
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 0 0;
+  overflow: hidden;
+  height: 100%;
+  width: 20vw;
+  margin: 20px;
 }
 
 .folder-link {
-    border: 1px solid black;
-    width: 100%;
-    text-align: center;
-    padding: 16px;
-    text-decoration: none;
-    font-size: 20px;
+  border: 1px solid black;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+  font-size: 20px;
 }
 
-.add-folder, 
+.add-folder,
 .go-back {
-    padding: 16px;
-    margin-top: 10px;
-    background-color: white;
-    border: 1px solid black;
-    width: 85%;
+  padding: 16px;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid black;
+  width: 85%;
 }
 
 .go-back {
-    margin-top: 0;
+  margin-top: 0;
 }
-
 
 .active {
-    background-color: lightblue;
+  background-color: lightblue;
 }

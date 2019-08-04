@@ -1,9 +1,9 @@
 import React from 'react';
-import './notes.css';
-import { Link } from 'react-router-dom';
+import './MainNotes.css';
+import { Link, withRouter } from 'react-router-dom';
 import NotefulContext from '../notefulContext';
 
-class Notes extends React.Component {
+class MainNotes extends React.Component {
   static contextType = NotefulContext;
 
   getModifiedString(date) {
@@ -16,40 +16,13 @@ class Notes extends React.Component {
   }
 
   renderRedirect = noteId => {
+    this.context.deleteNote(noteId);
     this.props.history.push('/');
-    fetch(`http://localhost:9090/notes/${noteId}`, {
-      method: 'DELETE',
-      headers: {
-        'content-type': 'application/json'
-      }
-    })
-      .then(res => {
-        if (!res.ok) {
-          return res.json().then(error => {
-            throw error;
-          });
-        }
-        return res.json();
-      })
-      .then(() => {
-        this.context.deleteNote(noteId);
-      })
-      .catch(error => {
-        console.error({ error });
-      });
   };
 
   render() {
-    let folderNotes = [];
-    if (!this.props.notes) {
-      folderNotes = this.context.notes;
-    } else {
-      folderNotes = this.context.notes.filter(
-        note => note.folderId === this.props.notes
-      );
-    }
-
-    const Notes = folderNotes.map((note, i) => (
+    console.log(this.props.match.params);
+    const Notes = this.props.notes.map((note, i) => (
       <div className="note" key={i}>
         <Link to={`/note/${note.id}`}>
           <h2 className="note-name">{note.name}</h2>
@@ -75,4 +48,4 @@ class Notes extends React.Component {
   }
 }
 
-export default Notes;
+export default withRouter(MainNotes);
