@@ -12,7 +12,6 @@ export default function sideBar(props) {
                 {folder.name}
             </NavLink>
         ))*/
-
   function makeFolderButtons(folders) {
     return folders.map(folder => (
       <NavLink
@@ -31,7 +30,9 @@ export default function sideBar(props) {
         return (
           <div className="side-bar">
             {makeFolderButtons(value.folders)}
-            <button className="add-folder">Add Folder</button>
+            <NavLink to="/addFolder" className="add-folder">
+              Add Folder
+            </NavLink>
           </div>
         );
       }}

@@ -2,6 +2,7 @@ import React from 'react';
 import './note.css';
 import { withRouter } from 'react-router-dom';
 import NotefulContext from '../notefulContext';
+import PropTypes from 'prop-types';
 
 class Note extends React.Component {
   static contextType = NotefulContext;
@@ -41,6 +42,7 @@ class Note extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     const note = this.props.note;
     return (
       <div className="note-route">
@@ -61,5 +63,9 @@ class Note extends React.Component {
     );
   }
 }
+
+Note.propTypes = {
+  note: PropTypes.object
+};
 
 export default withRouter(Note);

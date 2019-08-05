@@ -1,7 +1,10 @@
 import React from 'react';
 import './notes.css';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import NotefulContext from '../notefulContext';
+import PropsTypes from 'prop-types';
+import NotesError from './NotesError';
+import config from '../config';
 
 class Notes extends React.Component {
   static contextType = NotefulContext;
@@ -17,7 +20,8 @@ class Notes extends React.Component {
 
   renderRedirect = noteId => {
     this.props.history.push('/');
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    const url = config.API_ENDPOINT + '/notes/' + noteId;
+    fetch(url, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -51,9 +55,9 @@ class Notes extends React.Component {
 
     const Notes = folderNotes.map((note, i) => (
       <div className="note" key={i}>
-        <Link to={`/note/${note.id}`}>
+        <NavLink to={`/note/${note.id}`}>
           <h2 className="note-name">{note.name}</h2>
-        </Link>
+        </NavLink>
         <span className="date-modified">
           Date modified on {this.getModifiedString(note.modified)}
         </span>
@@ -67,12 +71,20 @@ class Notes extends React.Component {
     ));
 
     return (
-      <div className="notes">
-        {Notes}
-        <button className="add-note">Add Note</button>
-      </div>
+      <NotesError>
+        <div className="notes">
+          {Notes}
+          <NavLink to="/addNote" className="add-note">
+            Add Note
+          </NavLink>
+        </div>
+      </NotesError>
     );
   }
 }
+
+Notes.propTypes = {
+  notes: PropsTypes.string
+};
 
 export default Notes;

@@ -1,15 +1,18 @@
 import React from 'react';
 import Notes from '../notes/notes';
+import FolderError from './FolderError';
 
 class Folder extends React.Component {
   render() {
     return (
-      <div className="folder">
-        <Notes
-          notes={this.props.match.params.folderId}
-          history={this.props.history}
-        />
-      </div>
+      <FolderError>
+        <div className="folder">
+          <Notes
+            notes={this.props.match.params.folderId}
+            history={this.props.history}
+          />
+        </div>
+      </FolderError>
     );
   }
 }

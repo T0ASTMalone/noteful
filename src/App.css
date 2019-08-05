@@ -15,3 +15,7 @@ header {
   height: 100px;
   padding-top: 30px;
 }
+
+main {
+  min-width: 75vw;
+}

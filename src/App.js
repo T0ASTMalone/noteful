@@ -7,6 +7,9 @@ import Note from './note/note';
 import NoteNav from './NoteNav/NoteNav';
 import Folder from './Folder/Folder';
 import NotefulContext from './notefulContext';
+import AddFolder from './AddFolder/AddFolder';
+import AddNote from './AddNote/AddNote';
+import NavError from './NavError';
 
 class App extends Component {
   state = {
@@ -63,6 +66,16 @@ class App extends Component {
     });
   }
 
+  addFolder = (folderId, folderName) => {
+    //console.log(folderId, folderName);
+    const folder = { name: folderName, id: folderId };
+    this.setState({ folders: [...this.state.folders, folder] });
+  };
+
+  addNote = newNote => {
+    this.setState({ notes: [...this.state.notes, newNote] });
+  };
+
   deleteNote = noteId => {
     const newNotes = this.state.notes.filter(note => note.id !== noteId);
     this.setState({
@@ -88,9 +101,10 @@ class App extends Component {
     const value = {
       notes: this.state.notes,
       folders: this.state.folders,
-      deleteNote: this.deleteNote
+      deleteNote: this.deleteNote,
+      addFolder: this.addFolder,
+      addNote: this.addNote
     };
-
     return (
       <NotefulContext.Provider value={value}>
         <div className="App">
@@ -101,14 +115,16 @@ class App extends Component {
           </header>
           <div className="wrapper">
             <nav>
-              <Switch>
-                <Route
-                  exact
-                  path={['/', '/folder/:folderId']}
-                  component={SideBar}
-                />
-                <Route path="/note/:noteId" component={NoteNav} />
-              </Switch>
+              <NavError>
+                <Switch>
+                  <Route
+                    exact
+                    path={['/', '/folder/:folderId', '/addFolder', '/addNote']}
+                    component={SideBar}
+                  />
+                  <Route path="/note/:noteId" component={NoteNav} />
+                </Switch>
+              </NavError>
             </nav>
             <main>
               <Switch>
@@ -120,6 +136,8 @@ class App extends Component {
                     <Note note={this.getNote(props.match.params.noteId)} />
                   )}
                 />
+                <Route path="/addFolder" component={AddFolder} />
+                <Route path="/addNote" component={AddNote} />
               </Switch>
             </main>
           </div>
