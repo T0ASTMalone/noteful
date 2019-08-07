@@ -84,7 +84,8 @@ class Notes extends React.Component {
 }
 
 Notes.propTypes = {
-  notes: PropsTypes.string
+  notes: PropsTypes.string,
+  history: PropsTypes.object
 };
 
 export default Notes;

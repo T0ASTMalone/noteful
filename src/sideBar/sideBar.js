@@ -2,17 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './sideBar.css';
 import NotefulContext from '../notefulContext';
+import PropType from 'prop-types';
 
 export default function sideBar(props) {
-  /* const folders = props.folders.map(folder => (
-            <NavLink 
-                className='folder-link' 
-                key={folder.id} 
-                to={`/folder/${folder.id}`}>
-                {folder.name}
-            </NavLink>
-        ))*/
-
   function makeFolderButtons(folders) {
     return folders.map(folder => (
       <NavLink
@@ -24,7 +16,7 @@ export default function sideBar(props) {
       </NavLink>
     ));
   }
-
+  console.log(props);
   return (
     <NotefulContext.Consumer>
       {value => {
@@ -40,3 +32,9 @@ export default function sideBar(props) {
     </NotefulContext.Consumer>
   );
 }
+
+sideBar.propType = {
+  history: PropType.object,
+  location: PropType.object,
+  match: PropType.object
+};

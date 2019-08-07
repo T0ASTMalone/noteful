@@ -3,6 +3,7 @@ import './AddFolder.css';
 import config from '../config';
 import NotefulContext from '../notefulContext';
 import AddFolderError from './AddFolderError';
+import PropType from 'prop-types';
 
 export default class AddFolder extends React.Component {
   static contextType = NotefulContext;
@@ -63,7 +64,6 @@ export default class AddFolder extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <div className="add-folder-form">
         <form className="add_folder" onSubmit={this.handleSubmit}>
@@ -88,3 +88,9 @@ export default class AddFolder extends React.Component {
     );
   }
 }
+
+AddFolder.propType = {
+  history: PropType.object,
+  location: PropType.object,
+  match: PropType.object
+};

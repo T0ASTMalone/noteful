@@ -8,7 +8,6 @@ class NoteNav extends React.Component {
   static contextType = NotefulContext;
 
   getFolderName() {
-    console.log(this.props);
     const noteId = this.props.match.params.noteId;
     const note = this.context.notes.find(note => {
       return note.id === noteId;
@@ -33,8 +32,13 @@ class NoteNav extends React.Component {
 }
 
 NoteNav.propType = {
-  noteId: PropType.string,
-  history: PropType.object
+  history: PropType.object.isRequired,
+  location: PropType.object.isRequired,
+  match: PropType.shape({
+    params: PropType.shape({
+      noteId: PropType.string.isRequired
+    }).isRequired
+  }).isRequired
 };
 
 export default NoteNav;

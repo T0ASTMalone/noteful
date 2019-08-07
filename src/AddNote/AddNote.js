@@ -2,6 +2,7 @@ import React from 'react';
 import './AddNote.css';
 import NotefulContext from '../notefulContext';
 import config from '../config';
+import PropType from 'prop-types';
 
 export default class AddNote extends React.Component {
   static contextType = NotefulContext;
@@ -140,3 +141,9 @@ export default class AddNote extends React.Component {
     );
   }
 }
+
+AddNote.propType = {
+  history: PropType.object,
+  location: PropType.object,
+  match: PropType.object
+};

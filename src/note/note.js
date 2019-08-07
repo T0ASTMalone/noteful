@@ -42,7 +42,6 @@ class Note extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     const note = this.props.note;
     return (
       <div className="note-route">
@@ -65,7 +64,13 @@ class Note extends React.Component {
 }
 
 Note.propTypes = {
-  note: PropTypes.object
+  note: PropTypes.shape({
+    content: PropTypes.string.isRequired,
+    folderId: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    modified: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  })
 };
 
 export default withRouter(Note);
