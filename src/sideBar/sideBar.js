@@ -12,6 +12,7 @@ export default function sideBar(props) {
                 {folder.name}
             </NavLink>
         ))*/
+
   function makeFolderButtons(folders) {
     return folders.map(folder => (
       <NavLink

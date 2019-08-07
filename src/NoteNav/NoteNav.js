@@ -2,11 +2,13 @@ import React from 'react';
 import '../sideBar/sideBar.css';
 import './NoteNav.css';
 import NotefulContext from '../notefulContext';
+import PropType from 'prop-types';
 
 class NoteNav extends React.Component {
   static contextType = NotefulContext;
 
   getFolderName() {
+    console.log(this.props);
     const noteId = this.props.match.params.noteId;
     const note = this.context.notes.find(note => {
       return note.id === noteId;
@@ -29,5 +31,10 @@ class NoteNav extends React.Component {
     );
   }
 }
+
+NoteNav.propType = {
+  noteId: PropType.string,
+  history: PropType.object
+};
 
 export default NoteNav;

@@ -2,6 +2,7 @@ import React from 'react';
 import './AddFolder.css';
 import config from '../config';
 import NotefulContext from '../notefulContext';
+import AddFolderError from './AddFolderError';
 
 export default class AddFolder extends React.Component {
   static contextType = NotefulContext;
@@ -9,9 +10,27 @@ export default class AddFolder extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: false
+      error: false,
+      name: {
+        value: '',
+        touched: false
+      }
     };
   }
+
+  updateFolderName(name) {
+    this.setState({ name: { value: name, touched: true } });
+  }
+
+  validateFolderName() {
+    const name = this.state.name.value.trim();
+    if (name.length < 1) {
+      return 'A name is required';
+    } else if (name.length > 50) {
+      return 'The name must be less than 50 characters';
+    }
+  }
+
   handleSubmit = e => {
     e.preventDefault();
     const folder = {
@@ -44,7 +63,7 @@ export default class AddFolder extends React.Component {
   };
 
   render() {
-    console.log(this.context);
+    console.log(this.props);
     return (
       <div className="add-folder-form">
         <form className="add_folder" onSubmit={this.handleSubmit}>
@@ -53,10 +72,17 @@ export default class AddFolder extends React.Component {
           <input
             type="text"
             name="name"
-            defaultValue="Not important"
+            placeholder="Not important"
             id="name"
+            onChange={e => this.updateFolderName(e.target.value)}
           />
-          <button type="submit">Add Folder</button>
+          <AddFolderError
+            hasError={this.validateFolderName()}
+            touched={this.state.name.touched}
+          />
+          <button type="submit" disabled={this.validateFolderName()}>
+            Add Folder
+          </button>
         </form>
       </div>
     );

@@ -4,6 +4,7 @@ import FolderError from './FolderError';
 
 class Folder extends React.Component {
   render() {
+    console.log(this.props);
     return (
       <FolderError>
         <div className="folder">

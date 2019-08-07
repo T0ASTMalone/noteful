@@ -101,7 +101,7 @@ export default class AddNote extends React.Component {
         <input
           type="text"
           name="name"
-          defaultValue="Zigg"
+          placeholder="Zigg"
           id="name"
           onChange={e => this.updateName(e.target.value)}
         />
