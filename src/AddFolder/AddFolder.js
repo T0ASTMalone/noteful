@@ -35,7 +35,7 @@ export default class AddFolder extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     const folder = {
-      name: e.target.name.value
+      name: this.state.name.value
     };
     const url = config.API_ENDPOINT + '/folders';
     fetch(url, {

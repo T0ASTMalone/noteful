@@ -16,7 +16,7 @@ export default function sideBar(props) {
       </NavLink>
     ));
   }
-  console.log(props);
+
   return (
     <NotefulContext.Consumer>
       {value => {
