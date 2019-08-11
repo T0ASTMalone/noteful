@@ -45,17 +45,21 @@ class Note extends React.Component {
     const note = this.props.note;
     return (
       <div className="note-route">
-        <div className="note">
-          <h2>{note.name}</h2>
-          <p className="date-modified">
-            Date Modified on {this.getModifiedString(note.modified)}
-          </p>
-          <button
-            className="delete-note"
-            onClick={() => this.renderRedirect(note.id)}
-          >
-            Delete Note
-          </button>
+        <div className="note full">
+          <div className="note-info">
+            <h2>{note.name}</h2>
+            <p className="date-modified">
+              Date Modified on {this.getModifiedString(note.modified)}
+            </p>
+          </div>
+          <div className="button-container">
+            <button
+              className="delete-note"
+              onClick={() => this.renderRedirect(note.id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
         <p className="content">{note.content}</p>
       </div>

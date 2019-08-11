@@ -67,12 +67,14 @@ export default class AddFolder extends React.Component {
     return (
       <div className="add-folder-form">
         <form className="add_folder" onSubmit={this.handleSubmit}>
-          <h2>Add Folder</h2>
-          <label htmlFor="folder-name">Folder Name</label>
+          <h2 className="form-label">Add Folder</h2>
+          <label className="input-label" htmlFor="folder-name">
+            Folder Name
+          </label>
           <input
             type="text"
             name="name"
-            placeholder="Not important"
+            placeholder="Folder name"
             id="name"
             onChange={e => this.updateFolderName(e.target.value)}
           />
@@ -80,7 +82,11 @@ export default class AddFolder extends React.Component {
             hasError={this.validateFolderName()}
             touched={this.state.name.touched}
           />
-          <button type="submit" disabled={this.validateFolderName()}>
+          <button
+            className="submit"
+            type="submit"
+            disabled={this.validateFolderName()}
+          >
             Add Folder
           </button>
         </form>

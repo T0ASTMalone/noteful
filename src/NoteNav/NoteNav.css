@@ -1,3 +1,15 @@
 .folder-name {
   margin-top: 20px;
+  color: #e84a5f;
+  font-size: 24px;
+}
+
+.go-back:hover {
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 500px) {
+  .folder-name {
+    font-size: 14px;
+  }
 }

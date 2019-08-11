@@ -1,23 +1,23 @@
 .note-route {
-    padding-left: 20px;
-    padding: 20px;
-    width: 75vw;
+  padding-left: 20px;
+  padding: 20px;
+  width: 75vw;
 }
 
 .note {
-    border: 1px solid black;
-    height: 100px;
-    margin-bottom: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 10px;
+  height: 100px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.full {
+  background-color: #feceab;
 }
 
 .delete-note {
-    background-color: white;
-    border: 1px solid black;
-    padding: 7px 5px;
-    align-self: flex-end;
-    display: inline-block;
+  padding: 7px 5px;
+  background-color: #e84a5f;
 }

@@ -110,7 +110,9 @@ class App extends Component {
         <div className="App">
           <header className="header">
             <h1>
-              <Link to="/">Noteful</Link>
+              <Link className="app-name" to="/">
+                Noteful
+              </Link>
             </h1>
           </header>
           <div className="wrapper">

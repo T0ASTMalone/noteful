@@ -22,7 +22,10 @@ class NoteNav extends React.Component {
     const folderName = this.getFolderName();
     return (
       <div className="side-bar">
-        <button className="go-back" onClick={() => this.props.history.goBack()}>
+        <button
+          className="go-back button"
+          onClick={() => this.props.history.goBack()}
+        >
           Go Back
         </button>
         <h2 className="folder-name">{folderName}</h2>

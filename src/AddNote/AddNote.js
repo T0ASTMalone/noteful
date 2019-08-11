@@ -3,6 +3,7 @@ import './AddNote.css';
 import NotefulContext from '../notefulContext';
 import config from '../config';
 import PropType from 'prop-types';
+import AddNoteError from './AddNoteError';
 
 export default class AddNote extends React.Component {
   static contextType = NotefulContext;
@@ -20,7 +21,7 @@ export default class AddNote extends React.Component {
       },
       folderId: {
         value: '',
-        touched: false
+        touched: true
       }
     };
   }
@@ -34,7 +35,7 @@ export default class AddNote extends React.Component {
   }
 
   updateFolder(folderId) {
-    this.setState({ folderId: { value: folderId, touched: true } });
+    this.setState({ folderId: { value: folderId, touched: false } });
   }
 
   handleSubmit = e => {
@@ -75,20 +76,20 @@ export default class AddNote extends React.Component {
   validateName() {
     const name = this.state.name.value.trim();
     if (name.length < 1) {
-      return 'Name is required';
+      return 'A note name is required';
     }
   }
 
   validateContent() {
-    const content = this.state.content.touched;
+    const content = this.state.content.value;
     if (content.length < 1) {
-      return 'Note is required';
+      return 'A note is required';
     }
   }
 
   validateFolder() {
-    const folder = this.state.folderId.touched;
-    if (!folder) {
+    const folderSelected = this.state.folderId.touched;
+    if (!folderSelected === false) {
       return 'A folder must be selected';
     }
   }
@@ -97,8 +98,10 @@ export default class AddNote extends React.Component {
     const folders = this.context.folders;
     return (
       <form className="add_note" onSubmit={this.handleSubmit}>
-        <h2>Add Note</h2>
-        <label htmlFor="note-name">Note Name</label>
+        <h2 className="form-label">Add Note</h2>
+        <label className="input-label" htmlFor="note-name">
+          Note Name
+        </label>
         <input
           type="text"
           name="name"
@@ -106,16 +109,28 @@ export default class AddNote extends React.Component {
           id="name"
           onChange={e => this.updateName(e.target.value)}
         />
-        <label htmlFor="note">Note</label>
+        <AddNoteError
+          hasError={this.validateName()}
+          touched={this.state.name.touched}
+        />
+        <label className="input-label" htmlFor="note">
+          Note
+        </label>
         <textarea
           type="text"
           name="note"
           id="note"
           onChange={e => this.updateContent(e.target.value)}
         />
-        <label htmlFor="folder-select" />
+        <AddNoteError
+          hasError={this.validateContent()}
+          touched={this.state.content.touched}
+        />
+        <label className="input-label" htmlFor="folder-select">
+          Folder
+        </label>
         {folders.map(folder => (
-          <label htmlFor={folder.name} key={folder.id}>
+          <label className="radio-label" htmlFor={folder.name} key={folder.id}>
             <input
               type="radio"
               name="folderId"
@@ -126,8 +141,13 @@ export default class AddNote extends React.Component {
             {folder.name}
           </label>
         ))}
+        <AddNoteError
+          hasError={this.validateFolder()}
+          touched={this.state.folderId.touched}
+        />
         <button
           type="submit"
+          className="submit button"
           disabled={
             this.validateName() ||
             this.validateContent() ||

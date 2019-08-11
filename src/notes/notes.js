@@ -55,18 +55,22 @@ class Notes extends React.Component {
 
     const Notes = folderNotes.map((note, i) => (
       <div className="note" key={i}>
-        <NavLink to={`/note/${note.id}`}>
-          <h2 className="note-name">{note.name}</h2>
-        </NavLink>
-        <span className="date-modified">
-          Date modified on {this.getModifiedString(note.modified)}
-        </span>
-        <button
-          className="delete-note"
-          onClick={() => this.renderRedirect(note.id)}
-        >
-          Delete Note
-        </button>
+        <div className="note-info">
+          <NavLink className="note-name" to={`/note/${note.id}`}>
+            {note.name}
+          </NavLink>
+          <span className="date-modified">
+            Date modified on {this.getModifiedString(note.modified)}
+          </span>
+        </div>
+        <div className="button-container">
+          <button
+            className="delete-note"
+            onClick={() => this.renderRedirect(note.id)}
+          >
+            Delete
+          </button>
+        </div>
       </div>
     ));
 
