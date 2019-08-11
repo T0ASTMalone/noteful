@@ -40,7 +40,7 @@ export default class AddNote extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
+    this.props.history.push('/');
     const dateModified = new Date().toISOString();
     const { name, content, folderId } = this.state;
     const newNote = {
@@ -153,7 +153,7 @@ export default class AddNote extends React.Component {
             this.validateContent() ||
             this.validateFolder()
           }
-          onClick={() => this.props.history.goBack()}
+          //onClick={() => this.props.history.goBack()}
         >
           Add Note
         </button>

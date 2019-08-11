@@ -34,6 +34,7 @@ export default class AddFolder extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.history.push('/');
     const folder = {
       name: this.state.name.value
     };

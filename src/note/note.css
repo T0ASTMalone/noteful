@@ -21,3 +21,7 @@
   padding: 7px 5px;
   background-color: #e84a5f;
 }
+
+.note-name {
+  font-weight: normal;
+}

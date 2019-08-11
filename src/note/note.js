@@ -47,7 +47,7 @@ class Note extends React.Component {
       <div className="note-route">
         <div className="note full">
           <div className="note-info">
-            <h2>{note.name}</h2>
+            <h2 className="note-name">{note.name}</h2>
             <p className="date-modified">
               Date Modified on {this.getModifiedString(note.modified)}
             </p>
