@@ -19,7 +19,7 @@ class Note extends React.Component {
   renderRedirect = noteId => {
     //this.context.deleteNote(noteId);
     this.props.history.push('/');
-    fetch(`http://localhost:9090/notes/${noteId}`, {
+    fetch(`http://localhost:8000/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
@@ -31,7 +31,7 @@ class Note extends React.Component {
             throw error;
           });
         }
-        return res.json();
+        return res;
       })
       .then(() => {
         this.context.deleteNote(noteId);
@@ -49,7 +49,7 @@ class Note extends React.Component {
           <div className="note-info">
             <h2 className="note-name">{note.name}</h2>
             <p className="date-modified">
-              Date Modified on {this.getModifiedString(note.modified)}
+              Date Modified on {this.getModifiedString(note.date_modified)}
             </p>
           </div>
           <div className="button-container">
@@ -70,9 +70,9 @@ class Note extends React.Component {
 Note.propTypes = {
   note: PropTypes.shape({
     content: PropTypes.string.isRequired,
-    folderId: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-    modified: PropTypes.string.isRequired,
+    folderId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    date_modified: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   })
 };

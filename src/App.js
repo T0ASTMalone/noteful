@@ -19,7 +19,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:9090/folders', {
+    fetch('http://localhost:8000/api/folders', {
       method: 'GET'
     })
       .then(res => {
@@ -39,7 +39,7 @@ class App extends Component {
         console.error(error);
       });
 
-    fetch('http://localhost:9090/notes', {
+    fetch('http://localhost:8000/api/notes', {
       method: 'GET'
     })
       .then(res => {
@@ -62,12 +62,11 @@ class App extends Component {
 
   getNote(noteId) {
     return this.state.notes.find(note => {
-      return note.id === noteId;
+      return note.id.toString() === noteId;
     });
   }
 
   addFolder = (folderId, folderName) => {
-    //console.log(folderId, folderName);
     const folder = { name: folderName, id: folderId };
     this.setState({ folders: [...this.state.folders, folder] });
   };

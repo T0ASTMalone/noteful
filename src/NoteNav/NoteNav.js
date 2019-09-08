@@ -10,7 +10,7 @@ class NoteNav extends React.Component {
   getFolderName() {
     const noteId = this.props.match.params.noteId;
     const note = this.context.notes.find(note => {
-      return note.id === noteId;
+      return note.id.toString() === noteId;
     });
     const folder = this.context.folders.find(folder => {
       return folder.id === note.folderId;

@@ -1,7 +1,7 @@
 .note-route {
   padding-left: 20px;
-  padding: 20px;
-  width: 75vw;
+  padding: 20px 10px;
+  width: 70vw;
 }
 
 .note {
@@ -13,6 +13,10 @@
   padding: 10px;
 }
 
+.note-info {
+  padding-right: 5px;
+  overflow: hidden;
+}
 .full {
   background-color: #feceab;
 }
@@ -22,6 +26,16 @@
   background-color: #e84a5f;
 }
 
+.content {
+  word-wrap: break-word;
+}
+
 .note-name {
   font-weight: normal;
+}
+
+@media only screen and (min-width: 1000px) {
+  .note-route {
+    width: 50vw;
+  }
 }

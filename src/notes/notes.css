@@ -1,7 +1,7 @@
 .notes {
   margin-top: 20px;
-  padding: 0 20px;
-  width: 75vw;
+  padding: 0 10px;
+  width: 70vw;
 }
 
 .note {
@@ -60,5 +60,11 @@
 
   .delete-note {
     font-size: 14px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .notes {
+    width: 50vw;
   }
 }

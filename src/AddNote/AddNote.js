@@ -41,13 +41,13 @@ export default class AddNote extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.history.push('/');
-    const dateModified = new Date().toISOString();
+    //const dateModified = new Date().toISOString();
     const { name, content, folderId } = this.state;
     const newNote = {
       name: name.value,
       content: content.value,
-      folderId: folderId.value,
-      modified: dateModified
+      folderId: folderId.value
+      //modified: dateModified
     };
     const url = config.API_ENDPOINT + '/notes';
     fetch(url, {

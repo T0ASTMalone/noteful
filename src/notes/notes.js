@@ -33,7 +33,7 @@ class Notes extends React.Component {
             throw error;
           });
         }
-        return res.json();
+        return res;
       })
       .then(() => {
         this.context.deleteNote(noteId);
@@ -49,7 +49,7 @@ class Notes extends React.Component {
       folderNotes = this.context.notes;
     } else {
       folderNotes = this.context.notes.filter(
-        note => note.folderId === this.props.notes
+        note => note.folderId.toString() === this.props.notes
       );
     }
 
@@ -60,7 +60,7 @@ class Notes extends React.Component {
             {note.name}
           </NavLink>
           <span className="date-modified">
-            Date modified on {this.getModifiedString(note.modified)}
+            Date modified on {this.getModifiedString(note.date_modified)}
           </span>
         </div>
         <div className="button-container">
