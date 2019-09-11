@@ -10,6 +10,7 @@ import NotefulContext from './notefulContext';
 import AddFolder from './AddFolder/AddFolder';
 import AddNote from './AddNote/AddNote';
 import NavError from './NavError';
+import config from './config';
 
 class App extends Component {
   state = {
@@ -19,7 +20,7 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch('http://localhost:8000/api/folders', {
+    fetch(`${config.API_ENDPOINT}/api/folders`, {
       method: 'GET'
     })
       .then(res => {
@@ -39,7 +40,7 @@ class App extends Component {
         console.error(error);
       });
 
-    fetch('http://localhost:8000/api/notes', {
+    fetch(`${config.API_ENDPOINT}/api/notes`, {
       method: 'GET'
     })
       .then(res => {

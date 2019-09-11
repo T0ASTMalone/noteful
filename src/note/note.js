@@ -3,6 +3,7 @@ import './note.css';
 import { withRouter } from 'react-router-dom';
 import NotefulContext from '../notefulContext';
 import PropTypes from 'prop-types';
+import config from '../config';
 
 class Note extends React.Component {
   static contextType = NotefulContext;
@@ -19,7 +20,7 @@ class Note extends React.Component {
   renderRedirect = noteId => {
     //this.context.deleteNote(noteId);
     this.props.history.push('/');
-    fetch(`http://localhost:8000/api/notes/${noteId}`, {
+    fetch(`${config.API_ENDPOINT}/api/notes/${noteId}`, {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json'
