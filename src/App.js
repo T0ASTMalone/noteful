@@ -20,7 +20,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetch(`${config.API_ENDPOINT}/api/folders`, {
+    const url = config.API_ENDPOINT + '/api';
+    fetch(`${url}/folders`, {
       method: 'GET'
     })
       .then(res => {
@@ -40,7 +41,7 @@ class App extends Component {
         console.error(error);
       });
 
-    fetch(`${config.API_ENDPOINT}/api/notes`, {
+    fetch(`${url}/notes`, {
       method: 'GET'
     })
       .then(res => {
