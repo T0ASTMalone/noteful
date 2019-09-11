@@ -20,7 +20,7 @@ class Notes extends React.Component {
 
   renderRedirect = noteId => {
     this.props.history.push('/');
-    const url = config.API_ENDPOINT + '/notes/' + noteId;
+    const url = config.API_ENDPOINT + '/api/notes/' + noteId;
     fetch(url, {
       method: 'DELETE',
       headers: {

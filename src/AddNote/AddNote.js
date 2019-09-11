@@ -49,7 +49,7 @@ export default class AddNote extends React.Component {
       folderId: folderId.value
       //modified: dateModified
     };
-    const url = config.API_ENDPOINT + '/notes';
+    const url = config.API_ENDPOINT + '/api/notes';
     fetch(url, {
       method: 'POST',
       body: JSON.stringify(newNote),
