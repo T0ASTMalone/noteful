@@ -38,3 +38,13 @@ input[type='radio'] {
   font-weight: 500;
   border-bottom: 1px solid black;
 }
+
+.disabled {
+  background-color: grey;
+  color: white;
+}
+
+.active {
+  background-color: #ff847c;
+  color: #2a363b;
+}

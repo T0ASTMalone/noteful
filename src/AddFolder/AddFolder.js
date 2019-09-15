@@ -84,7 +84,9 @@ export default class AddFolder extends React.Component {
             touched={this.state.name.touched}
           />
           <button
-            className="submit"
+            className={`submit ${
+              !this.validateFolderName() ? 'active' : 'disabled'
+            }`}
             type="submit"
             disabled={this.validateFolderName()}
           >

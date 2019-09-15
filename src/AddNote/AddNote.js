@@ -147,13 +147,18 @@ export default class AddNote extends React.Component {
         />
         <button
           type="submit"
-          className="submit button"
+          className={`submit button ${
+            !this.validateName() &&
+            !this.validateContent() &&
+            !this.validateFolder()
+              ? 'active'
+              : 'disabled'
+          }`}
           disabled={
             this.validateName() ||
             this.validateContent() ||
             this.validateFolder()
           }
-          //onClick={() => this.props.history.goBack()}
         >
           Add Note
         </button>
